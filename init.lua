@@ -239,10 +239,10 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'bash', 'c', 'cpp', 'go', 'lua', 'python', 'ruby', 'javascript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -361,13 +361,10 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  bashls = {},
+  clangd = {},
+  gopls = {},
+  html = { filetypes = { 'html' } },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
