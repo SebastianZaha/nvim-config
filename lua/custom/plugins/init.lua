@@ -19,6 +19,20 @@ return {
   -- provides widgets for vim.ui.select and vim.ui.input; 
   { 'stevearc/dressing.nvim', opts = {}, },
 
+  -- colorschemes
+  'rktjmp/lush.nvim', -- for colorscheme customization
+ -- light
+  'yorickpeterse/nvim-grey',
+  'yorickpeterse/vim-paper',
+  'chiendo97/intellij.vim',
+  -- dark
+  'yorickpeterse/happy_hacking.vim',
+  'Luxed/ayu-vim',
+  'navarasu/onedark.nvim', -- Theme inspired by Atom
+  'cocopon/iceberg.vim',
+  'rakr/vim-one',
+  "rebelot/kanagawa.nvim",
+
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',

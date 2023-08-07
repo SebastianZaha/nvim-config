@@ -16,9 +16,9 @@ vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.showbreak = '>>'
 vim.o.breakindent = true
-vim.o.breakindentopt = 'sbr,shift:4'
+vim.o.breakindentopt = 'shift:4'
 
 -- color related
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd.colorscheme 'ayu'
+vim.cmd("colorscheme onedark")
