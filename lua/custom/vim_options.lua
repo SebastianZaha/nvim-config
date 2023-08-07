@@ -1,0 +1,11 @@
+vim.o.scrolloff = 7 -- cursor lines when at the top or bottom of the screen
+vim.o.sidescrolloff = 5
+vim.o.autoread = true -- autoload file changes. undo by pressing u
+vim.o.expandtab = true -- use spaces for indenting
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.diffopt = 'internal,filler,vertical,hiddenoff,closeoff,algorithm:patience'
+vim.o.splitbelow = true
+vim.o.splitright = true
