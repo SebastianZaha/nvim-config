@@ -379,23 +379,31 @@ local servers = {
   gopls = {},
   html = { filetypes = { 'html' } },
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      format = { enable = false },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+        format = { enable = false },
+      },
     },
   },
   solargraph = {
-    solargraph = {
-      diagnostics = false,
-      folding = false,
+    init_options = {
       formatting = false,
-    }
+    },
+    settings = {
+      solargraph = {
+        autoformat = false,
+        diagnostics = false,
+        folding = false,
+        formatting = false,
+      },
+    },
   },
 }
 
 -- Setup neovim lua configuration
-require('neodev').setup()
+require('neodev').setup({library = { plugins = { "nvim-dap-ui" }, types = true }})
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -407,15 +415,11 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
-
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
+    servers[server_name].capabilities = capabilities
+    servers[server_name].on_attach = on_attach
+    require('lspconfig')[server_name].setup(servers[server_name])
   end
 }
 
