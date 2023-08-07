@@ -16,6 +16,9 @@ return {
   -- remember last position per file
   { 'vladdoster/remember.nvim', config = [[ require('remember') ]] },
 
+  -- provides widgets for vim.ui.select and vim.ui.input; 
+  { 'stevearc/dressing.nvim', opts = {}, },
+
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',

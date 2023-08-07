@@ -64,9 +64,9 @@ return {
         icons = {
           pause = '⏸',
           play = '▶',
-          step_into = '⏎',
-          step_over = '⏭',
-          step_out = '⏮',
+          step_into = 's',
+          step_over = 'n',
+          step_out = 'f',
           step_back = 'b',
           run_last = '▶▶',
           terminate = '⏹',

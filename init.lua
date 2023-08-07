@@ -473,6 +473,7 @@ cmp.setup {
 
 require 'custom.vim_options'
 require 'custom.bindings'
+require 'custom.builders_and_runners'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
