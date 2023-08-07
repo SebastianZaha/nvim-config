@@ -35,6 +35,9 @@ vim.keymap.set('n', '<leader>gw', ':GBrowse<CR>')
 -- terminal
 vim.keymap.set('t', '<a-esc>', '<c-\\><c-N>')
 
+-- file browser
+vim.keymap.set('n', '<leader>E', ':Neotree reveal<cr>')
+
 -- telescope = [S]earch
 -- See `:help telescope.builtin`
 local builtin = require('telescope.builtin')

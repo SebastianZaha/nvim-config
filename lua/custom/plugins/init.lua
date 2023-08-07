@@ -13,6 +13,9 @@ return {
   -- :Bdelete and :Bwipeout to not mess up window layout
   'famiu/bufdelete.nvim',
 
+  -- remember last position per file
+  { 'vladdoster/remember.nvim', config = [[ require('remember') ]] },
+
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
