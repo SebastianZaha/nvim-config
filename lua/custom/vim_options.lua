@@ -21,4 +21,5 @@ vim.o.breakindentopt = 'shift:4'
 -- color related
 vim.o.termguicolors = true
 vim.o.background = 'dark'
+vim.o.cursorline = true
 vim.cmd("colorscheme onedark")
