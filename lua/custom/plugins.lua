@@ -47,31 +47,60 @@ return {
       },
     },
   },
+
+  -- The default icons are removed as they were not rendering properly.
+  -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/998#issuecomment-1597344948
   {
     "nvim-neo-tree/neo-tree.nvim",
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     },
-    config = function ()
-      require('neo-tree').setup {
-        window = {
-          position = "left",
-          width = 30,
-          mappings = {
-            ["l"] = "open",
-            ["h"] = "open",
-          }
+    opts = {
+      default_component_configs = {
+        icon = {
+          folder_closed = "+",
+          folder_open = "-",
+          folder_empty = "%",
+          default = ""
         },
-        filesystem = {
-          filtered_items = {
-            visible = true, -- when true, they will just be displayed differently than normal items
+        git_status = {
+          symbols = {
+            deleted = "",
+            renamed = "",
+            modified = "",
+            untracked = "",
+            ignored = "",
+            unstaged = "",
+            staged = "",
+            conflict = ""
           }
         }
-      }
-    end,
+      },
+      window = {
+        position = "left",
+        width = 30,
+        mappings = {
+          ["l"] = "open",
+          ["h"] = "open",
+        }
+      },
+      filesystem = {
+        filtered_items = {
+          visible = true, -- when true, they will just be displayed differently than normal items
+        },
+        components = {
+          icon = function(config, node, state)
+            if node.type == "file" or node.type == "directory" then
+              return {}
+            end
+            return require("neo-tree.sources.common.components").icon(config,
+              node, state)
+          end
+        }
+      },
+    },
   }
 }
 

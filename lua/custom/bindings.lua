@@ -54,7 +54,7 @@ local themes  = require('telescope.themes')
 vim.keymap.set('n', '<leader>s.',
   function() builtin.current_buffer_fuzzy_find(themes.get_dropdown({previewer = false})) end,
   { desc = 'Fuzzily search in current buffer' })
-vim.keymap.set('n', '<leader>s/',  builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>s/', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>s;', builtin.command_history, { desc = '[S]earch Commands' })
 vim.keymap.set('n', '<leader>s?', builtin.oldfiles, { desc = 'Find recently opened files' })
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[Search] existing [B]uffers' })
