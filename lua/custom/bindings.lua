@@ -11,6 +11,14 @@ vim.keymap.set('n', 'q', '<esc>:q<cr>')
 -- closing the buffer without messing up the window layout
 vim.keymap.set('n', '<c-w>b', ':Bdelete<cr>')
 
+-- FIXME: not sure yet if this is useful, or it would be simpler
+-- to just bdelete (<c-w>b)
+vim.keymap.set('n', '<c-a-o>', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_exec2('normal \\<C-O>', {})
+  vim.cmd.bdelete(bufnr)
+end)
+
 -- To use ALT+{h,j,k,l} to navigate window layout from any mode
 if 'Darwin' == vim.loop.os_uname().sysname then
   vim.keymap.set({'i', 't', 'n'}, '˙', '<c-\\><c-N><c-W>h')
