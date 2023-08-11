@@ -40,9 +40,6 @@ vim.keymap.set('n', '<Leader>gp', ':Git push<CR>')
 vim.keymap.set('n', '<leader>gs', ':G<CR><C-w>T')
 vim.keymap.set('n', '<leader>gw', ':GBrowse<CR>')
 
--- terminal
-vim.keymap.set('t', '<a-esc>', '<c-\\><c-N>')
-
 -- file browser
 vim.keymap.set('n', '<leader>E', ':Neotree reveal<cr>')
 

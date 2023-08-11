@@ -1,3 +1,10 @@
+-- example vim cmd with multiline string
+-- vim.cmd [[
+--  function! FooBarLuaScript()
+--  [...]
+--  endfunction
+-- ]]
+
 vim.o.autoread = true -- autoload file changes. undo by pressing u
 vim.o.scrolloff = 7 -- cursor lines when at the top or bottom of the screen
 vim.o.sidescrolloff = 5
@@ -23,3 +30,40 @@ vim.o.termguicolors = true
 vim.o.background = 'dark'
 vim.o.cursorline = true
 vim.cmd("colorscheme onedark")
+
+
+-- terminal settings, startinsert on enter, Bdelete on exit
+
+vim.api.nvim_create_augroup('TerminalSetup', { clear = true })
+
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = '*',
+  group = 'TerminalSetup',
+  callback = function()
+    vim.opt_local.filetype = 'terminal'
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = 'no'
+    vim.opt_local.statuscolumn = ''
+    vim.cmd.startinsert()
+  end,
+})
+
+vim.api.nvim_create_autocmd({'BufWinEnter', 'WinEnter'}, {
+  pattern = 'term://*',
+  group = 'TerminalSetup',
+  callback = function()
+    vim.cmd.startinsert()
+  end,
+})
+
+vim.api.nvim_create_autocmd('TermClose', {
+  pattern = '*',
+  group = 'TerminalSetup',
+  callback = function(event)
+    vim.print(event)
+    if not event.status then
+      vim.cmd('Bdelete')
+    end
+  end
+})
