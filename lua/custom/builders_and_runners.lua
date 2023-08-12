@@ -28,7 +28,7 @@ dap.configurations.cpp = {
     type = "codelldb",
     request = "launch",
     program = vim.fn.getcwd() .. '/Meta/gn/out/ladybird-debug/bin/ladybird',
-    args = { },
+    args = { "https://serenityos.org" },
     env = {
       SERENITY_SOURCE_DIR = "${workspaceFolder}",
     },
