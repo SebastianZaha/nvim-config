@@ -69,8 +69,9 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
         component_separators = '|',
+        globalstatus = true,
+        icons_enabled = false,
         section_separators = '',
       },
       sections = {
@@ -125,7 +126,14 @@ require('lazy').setup({
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
   require 'custom.plugins',
-}, {})
+}, {
+  dev = {
+    -- directory where you store your local plugin projects
+    path = "~/devel",
+    patterns = {"nvim-solar-paper"},
+    fallback = false, -- Fallback to git when local plugin doesn't exist,
+  },
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -292,12 +300,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
+local on_attach = function(client, bufnr)
+
+  -- Disable LSP syntax highlighting, we use Treesitter
+  client.server_capabilities.semanticTokensProvider = nil
+
+  -- A function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then

@@ -20,18 +20,20 @@ return {
   { 'stevearc/dressing.nvim', opts = {}, },
 
   -- colorschemes
-  'rktjmp/lush.nvim', -- for colorscheme customization
+  { 'rktjmp/lush.nvim', lazy = true }, -- for colorscheme customization
  -- light
-  'yorickpeterse/nvim-grey',
-  'yorickpeterse/vim-paper',
-  'chiendo97/intellij.vim',
+  { 'yorickpeterse/nvim-grey' },
+  { 'yorickpeterse/vim-paper' },
+  { 'chiendo97/intellij.vim', lazy = true },
   -- dark
-  'yorickpeterse/happy_hacking.vim',
-  'Luxed/ayu-vim',
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
-  'cocopon/iceberg.vim',
-  'rakr/vim-one',
-  "rebelot/kanagawa.nvim",
+  { 'yorickpeterse/happy_hacking.vim', lazy = true },
+  { 'Luxed/ayu-vim', lazy = true },
+  { 'navarasu/onedark.nvim', opts = { style = 'darker' }, },
+  { 'cocopon/iceberg.vim', lazy = true, },
+  { 'rakr/vim-one', lazy = true, },
+  { "rebelot/kanagawa.nvim", lazy = true, },
+
+  { "SebastianZaha/nvim-solar-paper", lazy = true},
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {

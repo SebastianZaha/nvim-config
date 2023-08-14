@@ -13,6 +13,9 @@ vim.o.relativenumber = true
 vim.o.diffopt = 'internal,filler,vertical,hiddenoff,closeoff,algorithm:patience'
 vim.o.splitbelow = true
 vim.o.splitright = true
+-- !! this is overwritten from the lualine plugin. 
+-- I keep it here for when I inevitably change or remove that plugin.
+vim.o.laststatus = 3
 
 -- indenting and tabs related
 vim.o.expandtab = true -- use spaces for indenting
@@ -27,9 +30,8 @@ vim.o.breakindentopt = 'shift:4'
 
 -- color related
 vim.o.termguicolors = true
-vim.o.background = 'dark'
 vim.o.cursorline = true
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme solar-paper")
 
 
 -- terminal settings, startinsert on enter, Bdelete on exit
