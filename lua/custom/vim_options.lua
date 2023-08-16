@@ -16,6 +16,8 @@ vim.o.splitright = true
 -- !! this is overwritten from the lualine plugin. 
 -- I keep it here for when I inevitably change or remove that plugin.
 vim.o.laststatus = 3
+ -- I don't like folds
+vim.o.foldenable = false
 
 -- indenting and tabs related
 vim.o.expandtab = true -- use spaces for indenting
