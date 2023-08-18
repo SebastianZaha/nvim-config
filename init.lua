@@ -29,9 +29,6 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -111,6 +108,7 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
   },
 
@@ -196,7 +194,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
+local telescope = require('telescope')
+local lga_actions = require("telescope-live-grep-args.actions")
+
+telescope.setup {
   defaults = {
     sorting_strategy = "ascending",
     layout_config = {
@@ -221,10 +222,20 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+    }
+  }
 }
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+telescope.load_extension("live_grep_args")
+telescope.load_extension("fzf")
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
