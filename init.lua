@@ -222,17 +222,18 @@ telescope.setup {
       },
     },
   },
-  extensions = {
-    live_grep_args = {
-      auto_quoting = true, -- enable/disable auto-quoting
-      mappings = { -- extend mappings
-        i = {
-          ["<C-k>"] = lga_actions.quote_prompt(),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-        },
-      },
-    }
-  }
+--  The quote bindings mess up the <tab> key for selecting results for Alt-Q
+--  extensions = {
+--    live_grep_args = {
+--      auto_quoting = true, -- enable/disable auto-quoting
+--      mappings = { -- extend mappings
+--        i = {
+--          ["<C-k>"] = lga_actions.quote_prompt(),
+--          ["<C-I>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+--        },
+--      },
+--    }
+--  }
 }
 telescope.load_extension("live_grep_args")
 telescope.load_extension("fzf")
