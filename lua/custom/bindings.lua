@@ -25,12 +25,12 @@ if 'Darwin' == vim.loop.os_uname().sysname then
   vim.keymap.set({'i', 't', 'n'}, '∆', '<c-\\><c-N><c-W>j')
   vim.keymap.set({'i', 't', 'n'}, '˚', '<c-\\><c-N><c-W>k')
   vim.keymap.set({'i', 't', 'n'}, '¬', '<c-\\><c-N><c-W>l')
-else
-  vim.keymap.set({'i', 't', 'n'}, '<a-h>', '<c-\\><c-N><c-W>h')
-  vim.keymap.set({'i', 't', 'n'}, '<a-j>', '<c-\\><c-N><c-W>j')
-  vim.keymap.set({'i', 't', 'n'}, '<a-k>', '<c-\\><c-N><c-W>k')
-  vim.keymap.set({'i', 't', 'n'}, '<a-l>', '<c-\\><c-N><c-W>l')
 end
+-- Keep the original bindings in macos, tmux sends these for example, hack for pane navigation
+vim.keymap.set({'i', 't', 'n'}, '<a-h>', '<c-\\><c-N><c-W>h')
+vim.keymap.set({'i', 't', 'n'}, '<a-j>', '<c-\\><c-N><c-W>j')
+vim.keymap.set({'i', 't', 'n'}, '<a-k>', '<c-\\><c-N><c-W>k')
+vim.keymap.set({'i', 't', 'n'}, '<a-l>', '<c-\\><c-N><c-W>l')
 
 -- [G]it
 vim.keymap.set('n', '<Leader>gd', ':Gvdiffsplit<CR>')
