@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  'vim-ruby/vim-ruby',
 
   -- [] mappings for args, quickfix, buffers, tabs, locations
   -- [<Space> to add line before cursor, [e to exchange line with line above
