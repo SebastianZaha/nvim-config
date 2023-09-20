@@ -5,6 +5,9 @@
 return {
   'vim-ruby/vim-ruby',
 
+  'mfussenegger/nvim-lsp-compl',
+  'mfussenegger/nvim-jdtls',
+
   -- [] mappings for args, quickfix, buffers, tabs, locations
   -- [<Space> to add line before cursor, [e to exchange line with line above
   -- yo<char> to toggle some options
