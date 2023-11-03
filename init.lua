@@ -23,7 +23,10 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+  {'EtiamNullam/deferred-clipboard.nvim', opts = {
+    fallback = 'unnamedplus',
+    lazy = true,
+  }},
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -145,11 +148,6 @@ vim.wo.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
 
 -- Save undo history
 vim.o.undofile = true
